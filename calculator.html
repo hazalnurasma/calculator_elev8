@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="calculator" />
+    <meta name="copyright" content="2023-CTRL+ FUTURE" />
+    <!-- <link href="index.css" type="text/css" rel="stylesheet"> -->
+	<title>Calculator Assesment</title>
+</head>
+
+<style>
+    
+.container{
+    background-color: rgb(180, 100, 100);
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    flex-direction: column;
+    width: 50%;
+    height: 8%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 10px rgb(22, 27, 24);
+    border-radius: 35px;
+    margin-top: -35%;
+}
+
+.title{
+    color:white;
+    text-shadow: -1px 1px 10px rgba(222, 222, 222, 0.808);;
+    font-weight: bold;
+    font-size:30px;
+}
+
+.caption{
+    color: rgb(179, 97, 97);
+    font-weight: lighter;
+    font-size: 15px;
+    padding-bottom: 2%;
+    text-align: center;
+    align-items: center;
+}
+
+body {
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: url("white3.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  max-width: 300px;
+  padding: 20px;
+  background-color: #e6a1ad;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.display {
+  grid-column: 1 / span 4;
+  text-align: right;
+  font-size: 24px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  grid-column: span 1;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.clear {
+  background-color: #cf7a7a;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+</style>
+
+<body>
+    <div class="container">
+        <h1 class="title">Calculator</h1>
+    </div>
+    <div class="caption">You can solve every mathematical problem here!</div>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <button class="clear" onclick="clearDisplay()">Clear</button>
+        <button onclick="appendToDisplay(7)">7</button>
+        <button onclick="appendToDisplay(8)">8</button>
+        <button onclick="appendToDisplay(9)">9</button>
+        <button onclick="appendToDisplay('/')">/</button>
+        <button onclick="appendToDisplay(4)">4</button>
+        <button onclick="appendToDisplay(5)">5</button>
+        <button onclick="appendToDisplay(6)">6</button>
+        <button onclick="appendToDisplay('*')">*</button>
+        <button onclick="appendToDisplay(1)">1</button>
+        <button onclick="appendToDisplay(2)">2</button>
+        <button onclick="appendToDisplay(3)">3</button>
+        <button onclick="appendToDisplay('-')">-</button>
+        <button onclick="appendToDisplay(0)">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="calculateResult()">=</button>
+        <button onclick="appendToDisplay('+')">+</button>
+      </div>
+
+
+</body>
+
+<script>
+let displayValue = '0';
+
+function updateDisplay() {
+  const display = document.getElementById('display');
+  display.textContent = displayValue;
+}
+
+function appendToDisplay(val) {
+  if (displayValue === '0') {
+    displayValue = val.toString();
+  } else {
+    displayValue += val.toString();
+  }
+  updateDisplay();
+}
+
+function clearDisplay() {
+  displayValue = '0';
+  updateDisplay();
+}
+
+function calculateResult() {
+  try {
+    displayValue = eval(displayValue).toString();
+  } catch (error) {
+    displayValue = 'Error';
+  }
+  updateDisplay();
+}
+
+updateDisplay();
+
+
+</script>
+
+</html>
